@@ -44,7 +44,6 @@ const actions = {
 
   getPost({commit},payload) {
     return axios.get(`post/${payload}`).then((value) => {
-      console.log(value);
       if (value.status === 200) {
         commit('setPostDetail',value.data.post);
         return value;

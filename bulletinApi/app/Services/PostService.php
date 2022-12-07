@@ -182,7 +182,7 @@ class PostService implements PostServiceInterface {
         return [
             'title' => $request->title,
             'description' => $request->description,
-            'status' => $request->status ?? '',
+            'status' => $request->status ?? 1,
         ];
 
     }
