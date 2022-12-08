@@ -57,8 +57,11 @@ export default {
     this.$store.dispatch('user/getCreateData');
   },
   methods:{
+    /**
+     * Create user
+     * @return void
+     */
     async confirmCreate() {
-      console.log(this.createdData.dob);
       const data = {
         name : this.createdData.name,
         email : this.createdData.email,
@@ -71,6 +74,11 @@ export default {
       }
       await this.$store.dispatch("user/confirmCreate",data);
     },
+
+    /**
+     * Go back to previous page
+     * @return void
+     */
     cancelCreate() {
       this.$router.go(-1);
     }

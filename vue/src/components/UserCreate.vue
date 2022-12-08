@@ -156,6 +156,11 @@ export default {
     this.$store.dispatch('user/getType');
   },
   methods:{
+    /**
+     * Preview image from input tag
+     * @param mixed e
+     * @return void
+     */
     previewProfile(e) {
       let profileRaw = e.target.files[0];
       let reader = new FileReader();
@@ -166,6 +171,11 @@ export default {
         this.profile = e.target.result;
       } 
     },
+
+    /**
+     * Create fomr-data and send to api to cache for confirm page
+     * @return void
+     */
     async createUser() {
       let fd = new FormData();
       fd.append('name',this.name);
@@ -184,6 +194,11 @@ export default {
         } 
       }  
     },
+
+    /**
+     * Clear all inputs
+     * @return void
+     */
     clearForm() {
       this.name = "";
       this.email = "";

@@ -10,6 +10,12 @@ const state = {
 };
 
 const actions = {
+
+  /**
+   * Logout user and commit logout mutation
+   * @param mixed commit
+   * @return void
+   */
   logOut({ commit }) {
     return axios.post("user/logout").then((value) => {
       if (value.status === 200) {
@@ -19,6 +25,13 @@ const actions = {
     }).catch((error) => {
     })
   },
+
+  /**
+   * Login user and commit login mutation
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   logIn({ commit }, payload) {
     return axios
       .post("user/login", payload)

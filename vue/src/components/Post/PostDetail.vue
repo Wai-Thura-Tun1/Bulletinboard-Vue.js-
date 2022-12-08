@@ -50,8 +50,14 @@
 export default {
   props:['post'],
   methods:{
+
+    /**
+     * Close post-detail modal
+     * @return void
+     */
     clickClose() {
       this.$emit('closedetail');
+      return;
     },
   }
 }

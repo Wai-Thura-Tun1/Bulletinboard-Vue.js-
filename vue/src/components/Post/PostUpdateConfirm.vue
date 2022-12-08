@@ -50,15 +50,31 @@ export default {
     }),
   },
   methods:{ 
+
+    /**
+     * Get update-post data from api
+     * @return void
+     */
     async updatedPostData(){
       let response = await this.$store.dispatch("post/getUpdatedPost");
       if (response && response.status === 200) {
         response.data.post.status == 1 ? this.status = true : this.status = false;
       }
     },
+
+    /**
+     * Go back to post edit page
+     * @return void
+     */
     cancelUpdate() {
       this.$router.push({name:'PostEdit', params:{id:this.updatedPost.id}});
+      return;
     },
+
+    /**
+     * Update post
+     * @return void
+     */
     async confirmUpdate() {
       const confirmData = {
         data:{
@@ -69,6 +85,7 @@ export default {
         id:this.updatedPost.id
       }
       await this.$store.dispatch("post/confirmUpdatePost",confirmData);
+      return;
     }
   }
 }

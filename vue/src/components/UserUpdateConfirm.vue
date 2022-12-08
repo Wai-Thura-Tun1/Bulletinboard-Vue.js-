@@ -57,6 +57,11 @@ export default {
     this.$store.dispatch('user/getUpdateData');
   },
   methods:{
+
+    /**
+     * Update user
+     * @return void
+     */
     async confirmUpdate() {
       const updateData = {
         data:{
@@ -71,9 +76,15 @@ export default {
         id:this.updatedData.id
       }
       await this.$store.dispatch("user/confirmUpdate",updateData);
+      return;
     },
+
+    /**
+     * Go to user edit page
+     * @return void
+     */
     cancelUpdate() {
-      this.$router.push({name:'UserEdit', params:{id:this.updatedData.id}});
+      return this.$router.push({name:'UserEdit', params:{id:this.updatedData.id}});
     }
   }
 }

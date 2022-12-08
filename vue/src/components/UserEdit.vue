@@ -162,6 +162,11 @@ export default {
     this.getData();
   },
   methods:{
+    /**
+     * Preview image from input tag
+     * @param mixed e
+     * @return void
+     */
     previewProfile(e) {
       let profileRaw = e.target.files[0];
       let reader = new FileReader();
@@ -172,6 +177,11 @@ export default {
         this.profile = e.target.result;
       } 
     },
+
+    /**
+     * Clear all inputs
+     * @return void
+     */
     clearForm() {
       this.name = "";
       this.email = "";
@@ -186,6 +196,11 @@ export default {
       this.$refs.profileHold.value = null;
       this.$store.commit('user/clearErrors');
     },
+
+    /**
+     * Get profile (user) detail
+     * @return void
+     */
     async getData() {
       let response = await this.$store.dispatch(
         "user/getProfile",
@@ -206,7 +221,12 @@ export default {
         localStorage.clear();
         this.$router.push("/login");
       }
-    },
+    },  
+
+    /**
+     * Send update-user data to cache in api
+     * @return void
+     */
     async updateUser() {
       let fd = new FormData();
       fd.append('_method','PUT');

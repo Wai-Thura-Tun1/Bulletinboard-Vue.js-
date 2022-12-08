@@ -78,6 +78,10 @@ export default {
     }),
   },
   methods: {
+    /**
+     * Handle Login user and add credentials in localStorage
+     * @return void
+     */
     async handleLogin() {
       this.$store.commit('toggleLoading',true);
       const data = {

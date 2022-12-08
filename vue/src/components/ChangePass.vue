@@ -70,6 +70,10 @@ export default {
     })
   },
   methods:{
+    /**
+     * Change password
+     * @return void
+     */
     async changePass() {
       const data = {
         newPass:this.newPass,
@@ -80,6 +84,7 @@ export default {
       if (response) {
         if(response.status === 200) {
           this.$router.push("/");
+          return;
         }
       }
     }

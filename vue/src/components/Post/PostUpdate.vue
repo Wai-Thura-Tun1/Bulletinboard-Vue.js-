@@ -71,6 +71,11 @@ export default {
     this.getPostDetail();
   },
   methods:{
+
+    /**
+     * Get post detail
+     * @return void
+     */
     async getPostDetail() {
       let response = await this.$store.dispatch("post/getPost",this.$route.params.id);
       if (response && response.status === 200) {
@@ -79,13 +84,24 @@ export default {
         this.description = post.description;
         post.status == 1 ? this.status = true : this.status = false;
       }
+      return;
     },
+
+    /**
+     * Clear all inputs
+     * @return void
+     */
     clearForm() {
       this.title = '';
       this.description = '';
       this.status = 1;
+      return;
     },
 
+    /**
+     * Send update-post data to cache in api
+     * @return void
+     */
     async updatePost() {
       const updateData = {
         data: { 

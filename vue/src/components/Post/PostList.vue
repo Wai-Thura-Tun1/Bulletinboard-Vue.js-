@@ -91,24 +91,46 @@ export default {
     this.searchPost();
   },
   methods:{
-    deletePost(){
-    },
+    
+    /**
+     * Search and pagination posts
+     * @return void
+     */
     async searchPost(page = 1) {
       const paraPayload = {
         search:this.search,
         page: page,
       }
       await this.$store.dispatch('post/searchPost',paraPayload);
+      return;
     },
+
+    /**
+     * Get post detail
+     * @param int id
+     * @return void
+     */
     async showDetail(id) {
       await this.$store.dispatch('post/getPost',id);
       this.detailModal = true;
+      return;
     },
+
+    /**
+     * Delete post
+     * @return void
+     */
     async deletePost() {
       this.deleteModal = false;
       await this.$store.dispatch("post/deletePost",this.deleteId);
       await this.searchPost();
+      return;
     },
+
+    /**
+     * Export post as excel file
+     * @return void
+     */
     async exportPost() {  
       let response = await this.$store.dispatch("post/exportPost"); 
       const aTag = document.createElement('a');
@@ -121,6 +143,7 @@ export default {
       aTag.click();
       window.URL.revokeObjectURL(url);
       aTag.remove();
+      return;
     }
   }
 }

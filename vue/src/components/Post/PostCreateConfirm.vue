@@ -38,12 +38,18 @@ export default {
     this.$store.dispatch("post/getCreatedPost");
   },
   methods:{
+
+    /**
+     * Create post
+     * @return void
+     */
     async confirmCreatePost() {
       const data = {
         title:this.createdPost.title,
         description: this.createdPost.description,
       }
       await this.$store.dispatch("post/confirmCreatePost",data);
+      return;
     }
   }
 }

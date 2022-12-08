@@ -74,6 +74,11 @@ export default {
     }),
   },
   methods: {
+
+    /**
+     * Get profile (user) detail
+     * @return void
+     */
     async getData() {
       let response = await this.$store.dispatch(
         "user/getProfile",
@@ -87,11 +92,12 @@ export default {
         this.address = response.data.user.address;
         this.dob = response.data.user.dob;
         this.profile = response.data.user.profile;
+        return;
       }
       else {
         this.$store.commit("auth/logout");
         localStorage.clear();
-        this.$router.push("/login");
+        return this.$router.push("/login");
       }
     },
   },

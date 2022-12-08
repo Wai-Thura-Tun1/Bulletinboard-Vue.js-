@@ -58,10 +58,21 @@ export default {
     })
   },
   methods:{
+
+    /**
+     * Clear all inputs
+     * @return void
+     */
     clearForm() {
       this.title = '',
       this.description = ''
+      return;
     },
+
+    /**
+     * Send create-post data to cache in api
+     * @return void
+     */
     async createPost() {
       const data = {
         title:this.title,
@@ -69,7 +80,7 @@ export default {
       }
       let response = await this.$store.dispatch("post/createPost",data);
       if (response.status === 200) {
-        this.$router.push("/post/create/confirm");
+        return this.$router.push("/post/create/confirm");
       }
     },
   }

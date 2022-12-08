@@ -52,12 +52,18 @@ export default {
     this.$store.commit("auth/login");
   },
   methods: {
+
+    /**
+     * Logout user
+     * @return void
+     */
     async logoutUser() {
       this.showModal = false;
       let response = await this.$store.dispatch("auth/logOut");
       if (response.status === 200) {
         localStorage.clear();
         this.$router.push("/login");
+        return;
       }
     },
   },

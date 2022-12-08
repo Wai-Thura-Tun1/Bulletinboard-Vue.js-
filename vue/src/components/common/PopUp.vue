@@ -24,9 +24,19 @@
 export default {
   props:['title','text'],
   methods:{
+
+    /**
+     * Emit close event to parent component
+     * @return void
+     */
     clickClose() {
       this.$emit('closebox');
     },
+
+    /**
+     * Emit confirm event to parent component
+     * @return void
+     */
     clickConfirm() {
       this.$emit('confirmbox');
     },

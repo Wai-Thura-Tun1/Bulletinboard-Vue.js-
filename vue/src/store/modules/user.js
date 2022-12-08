@@ -39,6 +39,13 @@ const mutations = {
 };
 
 const actions = {
+
+  /**
+   * Get profile (user) detail
+   * @param mixed commit
+   * @param int payloadID
+   * @return void
+   */
   getProfile({ commit }, payloadID) {
     return axios
       .get(`user/${payloadID}`)
@@ -53,6 +60,12 @@ const actions = {
       });
   },
 
+  /**
+   * Search and pagination user lists
+   * @param mixed commit
+   * @param int payload
+   * @return void
+   */
   searchUser({commit},payload) {
     return axios.get('users',{params:payload}).then((value) => {
       if (value.status == 200) {
@@ -67,6 +80,11 @@ const actions = {
     })
   },
 
+  /**
+   * Get all user type
+   * @param mixed commit
+   * @return void
+   */
   getType({commit}) {
     return axios.get("user/type").then((value) => {
       if (value.status === 200) {
@@ -77,6 +95,11 @@ const actions = {
     })
   },
 
+  /**
+   * Get create-user data from api
+   * @param mixed commit
+   * @return void
+   */
   getCreateData({commit}) {
     return axios.get("user/create/data").then((value) => {
       if (value.status === 200) {
@@ -89,6 +112,11 @@ const actions = {
     })
   },
 
+  /**
+   * Get update-user data from api
+   * @param mixed commit
+   * @return void
+   */
   getUpdateData({commit}) {
     return axios.get("user/update/data").then((value) => {
       if (value.status === 200) {
@@ -101,6 +129,12 @@ const actions = {
     })
   },
 
+  /**
+   * Create user
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   confirmCreate({commit},payload) {
     return axios.post("user/create/data",payload).then((value) => {
       if (value.status === 200) {
@@ -110,6 +144,12 @@ const actions = {
     })
   },
 
+  /**
+   * Update user
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   confirmUpdate({commit},payload) {
     return axios.post(`user/${payload.id}/update`,payload.data).then((value) => {
       if (value.status === 200) {
@@ -119,6 +159,12 @@ const actions = {
     })
   },
 
+  /**
+   * Send create-user data to cache in api
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   createUser({commit},payload) {
     return axios.post("user",payload).then((value) => {
       if (value.status === 200) {
@@ -129,6 +175,12 @@ const actions = {
     })
   },
 
+  /**
+   * Send update-user data to cache in api
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   updateUser({commit},payload) {
     return axios.post(`user/${payload.id}`,payload.data).then((value) => {
       if (value.status === 200) {
@@ -139,6 +191,12 @@ const actions = {
     })
   },
 
+  /**
+   * Delete user
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   deleteUser({commit},payload) {
     return axios.delete(`user/${payload}`).then((value) => {
       if (value.status === 200) {
@@ -148,6 +206,12 @@ const actions = {
     })
   },
 
+  /**
+   * Change password
+   * @param mixed commit
+   * @param Object payload
+   * @return void
+   */
   changePassword({commit},payload) {
     return axios.put('user/password',payload).then((value) => {
       if (value.status === 200) {

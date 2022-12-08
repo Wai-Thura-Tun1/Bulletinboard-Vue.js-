@@ -93,6 +93,11 @@ export default {
     this.searchUser();
   },
   methods: {
+    /**
+     * Search and pagination user lists
+     * @param int page
+     * @return void
+     */
     async searchUser(page = 1) {
       const parameter = {
         page: page,
@@ -103,10 +108,16 @@ export default {
       };
       await this.$store.dispatch("user/searchUser", parameter);
     },
+
+    /**
+     * Delete user
+     * @return void
+     */
     async deleteUser() {
       this.deleteModal = false;
       await this.$store.dispatch("user/deleteUser",this.deleteId);
       await this.searchUser();
+      return;
     },
   },
 };

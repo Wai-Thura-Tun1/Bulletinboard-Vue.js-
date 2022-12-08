@@ -31,13 +31,25 @@ export default {
     })
   },
   methods:{
+
+    /**
+     * Add selected-file to postfile 
+     * @return void
+     */
     selectCSVFile(e) {
       this.postfile = e.target.files[0];
+      return;
     },
+
+    /**
+     * Upload post using csv file
+     * @return void
+     */
     async uploadPost() {
       let fd = new FormData();
       fd.append('data',this.postfile);
       await this.$store.dispatch("post/uploadCSV",fd);
+      return;
     }
   }  
 }
